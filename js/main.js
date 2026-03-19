@@ -4,6 +4,9 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  // ── Reduced motion preference ────────────────────────────────
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   // ── Navbar scroll behavior ──────────────────────────────────
   const navbar = document.querySelector('.navbar');
   const backToTop = document.querySelector('.back-to-top');
@@ -218,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
       heroSubmitBtn.classList.remove('loading');
       heroSubmitBtn.disabled = false;
       heroForm.reset();
-      showToast('Brochure envoyée ! Un conseiller vous contactera sous 48h.', 'success');
+      showToast('Place réservée ! Un conseiller vous contactera sous 48h.', 'success');
     }, 1500);
   });
 
@@ -257,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroDeco = document.querySelector('.hero-deco');
   const heroVisual = document.querySelector('.hero-visual');
 
-  if (heroDeco && heroVisual) {
+  if (heroDeco && heroVisual && !prefersReducedMotion) {
     window.addEventListener('scroll', () => {
       const y = window.scrollY;
       if (y < window.innerHeight) {
@@ -268,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── Timeline steps stagger reveal ──────────────────────────
   const timelineSteps = document.querySelectorAll('.timeline-step');
-  if (timelineSteps.length) {
+  if (timelineSteps.length && !prefersReducedMotion) {
     const stepObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -290,16 +293,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ── Programme card tilt micro-interaction ───────────────────
-  document.querySelectorAll('.programme-card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const rect = card.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
-      card.style.transform = `translateY(-10px) perspective(600px) rotateX(${y * -3}deg) rotateY(${x * 3}deg)`;
+  if (!prefersReducedMotion) {
+    document.querySelectorAll('.programme-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        card.style.transform = `translateY(-10px) perspective(600px) rotateX(${y * -3}deg) rotateY(${x * 3}deg)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
     });
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
-    });
-  });
+  }
 
 });
