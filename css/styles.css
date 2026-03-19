@@ -1509,7 +1509,7 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
   font-size: 40px;
   flex-shrink: 0;
 }
-.international-box h4 {
+.international-box h3 {
   font-family: var(--font-heading);
   font-size: 18px;
   font-weight: 700;
@@ -1631,7 +1631,7 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
 }
 
 /* Form */
-.contact-form h3 {
+.contact-form h2 {
   font-family: var(--font-heading);
   font-size: 28px;
   font-weight: 800;
@@ -1752,7 +1752,7 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
   flex-direction: column;
   gap: 28px;
 }
-.info-block h4 {
+.info-block h3 {
   font-family: var(--font-heading);
   font-size: 16px;
   font-weight: 700;
@@ -1878,7 +1878,7 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
   line-height: 1.7;
 }
 
-.footer-col h4 {
+.footer-col h3 {
   font-family: var(--font-heading);
   font-size: 15px;
   font-weight: 700;
@@ -1886,7 +1886,7 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
   position: relative;
   padding-bottom: 12px;
 }
-.footer-col h4::after {
+.footer-col h3::after {
   content: '';
   position: absolute;
   bottom: 0;
