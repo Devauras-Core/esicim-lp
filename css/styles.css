@@ -1352,6 +1352,183 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
 }
 
 /* ============================================================
+   PARTNERSHIP
+   ============================================================ */
+.partnership {
+  padding: 100px 0;
+  background: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+.partnership::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(30,58,138,.04) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.partnership::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: -80px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(249,115,22,.04) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.partnership-card {
+  background: linear-gradient(135deg, var(--blue-50) 0%, var(--white) 50%, var(--orange-50) 100%);
+  border: 1px solid rgba(30,58,138,.08);
+  border-radius: var(--radius-xl);
+  padding: 56px 48px;
+  box-shadow: 0 8px 40px rgba(30,58,138,.06);
+  position: relative;
+}
+
+.partnership-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+.partner-logo-wrap {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 24px 36px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(0,0,0,.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition), box-shadow var(--transition);
+  min-width: 180px;
+  min-height: 100px;
+}
+.partner-logo-wrap:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.partner-logo {
+  max-width: 180px;
+  max-height: 70px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.partnership-connector {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.connector-line {
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--blue-700), var(--orange-500));
+  border-radius: 2px;
+}
+.connector-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue-700), var(--orange-500));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(37,99,235,.25);
+}
+.connector-icon svg {
+  stroke: var(--white);
+}
+
+.partnership-benefits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.partnership-benefit {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  border-radius: var(--radius-md);
+  background: rgba(255,255,255,.7);
+  border: 1px solid rgba(0,0,0,.04);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.partnership-benefit:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.benefit-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--blue-100), var(--blue-50));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--blue-700);
+}
+.benefit-icon svg {
+  stroke: var(--blue-700);
+}
+
+.partnership-benefit h4 {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--blue-900);
+  margin-bottom: 6px;
+}
+.partnership-benefit p {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .partnership-card {
+    padding: 40px 24px;
+  }
+  .partnership-logos {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .partnership-connector {
+    flex-direction: column;
+  }
+  .connector-line {
+    width: 2px;
+    height: 24px;
+  }
+  .partner-logo-wrap {
+    min-width: 160px;
+    min-height: 80px;
+    padding: 20px 28px;
+  }
+  .partnership-benefits {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* ============================================================
    ADMISSION
    ============================================================ */
 .admission {
@@ -1973,7 +2150,7 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
 /* WhatsApp floating button */
 .whatsapp-float {
   position: fixed;
-  bottom: 96px;
+  bottom: 85px;
   right: 32px;
   width: 56px;
   height: 56px;
