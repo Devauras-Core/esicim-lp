@@ -217,12 +217,30 @@ document.addEventListener('DOMContentLoaded', () => {
     heroSubmitBtn.classList.add('loading');
     heroSubmitBtn.disabled = true;
 
-    setTimeout(() => {
-      heroSubmitBtn.classList.remove('loading');
-      heroSubmitBtn.disabled = false;
+    const formData = {
+      nom_complet: heroForm.querySelector('[name="nom_complet"]').value.trim(),
+      email: heroForm.querySelector('[name="email"]').value.trim(),
+      telephone: heroForm.querySelector('[name="telephone"]').value.trim(),
+      date_soumission: new Date().toISOString()
+    };
+
+    fetch('api/submit.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    })
+    .then(response => {
+      if (!response.ok) throw new Error('Erreur réseau');
       heroForm.reset();
       showToast('Place réservée ! Un conseiller vous contactera sous 48h.', 'success');
-    }, 1500);
+    })
+    .catch(() => {
+      showToast('Une erreur est survenue. Veuillez réessayer.', 'error');
+    })
+    .finally(() => {
+      heroSubmitBtn.classList.remove('loading');
+      heroSubmitBtn.disabled = false;
+    });
   });
 
 
